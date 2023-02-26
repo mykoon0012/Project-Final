@@ -1,0 +1,46 @@
+<%- include("_header") -%>
+    <div class="container p-5">
+        <div class="card">
+            <div class="card-body">
+                
+                <h1>Admin </h1>
+                
+                    <div class="card-body">
+                        <% if(data.length) { %>
+                            <table class="table">
+                                <thead>
+                                    <tr>
+                                        <th scope="col">ID</th>
+                                        <th scope="col">Name</th>
+                                        <th scope="col">Email</th>
+                                        <th width="200px">Action 
+                                            <a href="../adminAction/Create" class="btn btn-success Create  ">Create</a> 
+                                        </th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <% for(let i = 0; i < data.length; i++) { %>
+                                        <tr>
+                                            <th scope="row"><%= data[i].id %></th>
+                                            <td><%= data[i].name %></td>
+                                            <td><%= data[i].email %></td>
+                                            <td>
+                                                <a href="../adminAction/edit/<%= data[i].id %>" class="btn btn-warning edit">Edit</a>
+                                                <a href="../delete/<%= data[i].id %>" onclick="return alert('Are you sure?')" class="btn btn-danger delete">Delete</a>
+                                            </td>
+                                        </tr>
+                                    <% } %>
+                                </tbody>
+                            </table>
+                        <% } %>
+            
+                        <!-- if result is empty -->
+                        <% if(!data.length) { %>
+                            <p class="text-center">No book found!</p>
+                            <a href="/logout" class="btn btn-danger">Logout</a>
+                        <% } %>
+                    </div>
+            </div>
+        </div>
+    </div>
+    <%- include("_footer") -%>

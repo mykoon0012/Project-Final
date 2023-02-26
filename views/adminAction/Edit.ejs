@@ -1,0 +1,43 @@
+<%- include("../_header") -%>
+
+    <div class="container  p-5">
+        <div class="row">
+            <div class=" bg-light rounded border  ">
+
+                <h1 class="mt-2 mb-3 text-uppercase "> EDIT</h1>
+
+                <form action="/adminAction/edit/<%= data.id %>" method="post" novalidate>
+                    <div class="form-group mb-2 col-sm-12 ">
+                        <label for="_eid">ID</label>
+                        <input type="text" name="id" id="_eid" class="form-control" placeholder=""
+                            value="<%= data.id %>" autocomplete="off" readonly>
+                        <label for="_ename">Name</label>
+                    </div>
+                    <div class="form-group mb-2 col-sm-12 ">
+                        <label for="_rname">Name</label>
+                        <input type="text" name="user_name" id="_ename" class="form-control" placeholder=""
+                            value="<%= data.name %>" autocomplete="off" required>
+                    </div>
+                    <div class="form-group mb-2 col-sm-12">
+                        <label for="_remail">Email </label>
+                        <input type="email" name="user_email" id="_eemail" class="form-control" placeholder=""
+                            value="<%= data.email %>" autocomplete="off" required>
+                    </div>
+                    <div class="form-group mb-2 col-sm-12">
+                        <label for="_rpass">Password</label>
+                        <input type="password" name="user_pass" id="_epass" class="form-control" placeholder="Password"
+                            required>
+                    </div>
+                    <% if (locals.register_error) { register_error.forEach(function(error_msg){ %>
+                        <div class="alert alert-danger" role="alert">
+                            <%= error_msg %>
+                        </div>
+                        <% }); } %>
+                            <button type="submit" class="btn btn-warning mt-3 mb-3">Edit</button>
+                            <a href="/Users" class="btn btn-danger mb-2 mt-2"> Cancel</a>
+                </form>
+
+            </div>
+        </div>
+    </div>
+    <%- include("../_footer") -%>

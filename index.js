@@ -1,11 +1,9 @@
-const express = require("express");
-const path = require("path");
-const sqlite3 = require("sqlite3").verbose();
+const express = require('express');
+const path = require('path');
 const cookieSession = require('cookie-session');
-const mysql = require('mysql');
 const bcrypt = require('bcrypt');
-const { body, validationResult } = require('express-validator');
 const dbConnection = require('./database');
+const { body, validationResult } = require('express-validator');
 const app = express();
 const server = require("http").Server(app);
 const { v4: uuidv4 } = require("uuid");
@@ -20,17 +18,18 @@ const io = require("socket.io")(server, {
         origin: '*'
     }
 });
-app.get("/room", (req,res,next) => {
-     let id = req.params.id;
-     dbConnection.query("SELECT * FROM `users` ",[id])
-     .then(([rows]) => {
-        res.render('room',{name:rows[0].name,roomId: req.params.room});
-     });
-  });
+// app.get("/room", (req,res,next) => {
+//      let id = req.params.id;
+//      dbConnection.query("SELECT * FROM `users` ",[id])
+//      .then(([rows]) => {
+//         res.render('room',{name:rows[0].name,roomId: req.params.room});
+//      });
+//   });
 
-// app.get("room/:room", (req, res) => {
-//     res.render("room", { roomId: req.params.room });
-// });
+  app.get("/room", (req, res) => { // สร้าง route กับ ตัวแปรของห้องเพื่อนำไปแสดงในหน้า room.ejs
+    res.render("room", { roomId: req.params.room });
+});
+
 
 io.on("connection", (socket) => {
     socket.on("join-room", (roomId, userId, userName) => {
@@ -44,11 +43,8 @@ io.on("connection", (socket) => {
     });
 });
 
-
-
 app.use("/peerjs", ExpressPeerServer(server, opinions));
 app.use(express.static("public"));
-
 
 app.use(express.urlencoded({extended:false}));
 

@@ -109,7 +109,7 @@ app.post('/register', ifLoggedin,
 
           dbConnection.execute("INSERT INTO `users`(`name`,`email`,`password`) VALUES(?,?,?)",[user_name,user_email, hash_pass])
           .then(result => {
-            res.redirect('/');
+            res.redirect("/");
           }).catch(err => {
 
               if (err) throw err;

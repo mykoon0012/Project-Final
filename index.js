@@ -49,7 +49,7 @@ app.use(express.static("public"));
 app.use(express.urlencoded({extended:false}));
 
 app.set('views', path.join(__dirname,'views'));
-app.set('view engine','ejs');
+
 
 app.use(cookieSession({
   name: 'session',
@@ -109,8 +109,7 @@ app.post('/register', ifLoggedin,
 
           dbConnection.execute("INSERT INTO `users`(`name`,`email`,`password`) VALUES(?,?,?)",[user_name,user_email, hash_pass])
           .then(result => {
-              
-              res.send(`<center>your account has been created successfully, Now you can <a href="/">Login</a></center>`);
+            res.redirect('/');
           }).catch(err => {
 
               if (err) throw err;
@@ -133,8 +132,6 @@ app.post('/register', ifLoggedin,
       });
   }
 });
-
-
 
 app.post('/', ifLoggedin, [
   body('user_email').custom((value) => {
@@ -189,11 +186,8 @@ app.post('/', ifLoggedin, [
   }
 });
 
-server.listen(process.env.PORT || 3000, () => console.log("Server is Running..."));
-
 
 app.get("/", (req, res) => {
-
   res.render("index");
 });
 
@@ -221,15 +215,11 @@ app.get("/adminAction/create", (req, res) => {
   res.render("adminAction/Create", { model: {} });
 });
 
-
-
 app.get("/create", (req, res) => {
   res.render("create", { model: {} });
 });
 
-
 app.post('/adminAction/Create',
-
 [
     body('user_email','Invalid email address!').isEmail().custom((value) => {
         return dbConnection.execute('SELECT email FROM users WHERE email=?', [value])
@@ -328,3 +318,4 @@ app.get('/logout',(req,res)=>{
   req.session = null;
   res.redirect('/');
 });
+server.listen(process.env.PORT || 3000, () => console.log("Server is Running..."));

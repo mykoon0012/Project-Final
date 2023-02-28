@@ -1,54 +1,83 @@
 <!DOCTYPE html>
-<html lang="en">
-
-<head>
+<!-- Coding by CodingLab | www.codinglabweb.com-->
+<html lang="en" dir="ltr">
+  <head>
     <meta charset="UTF-8">
+    <!--<title> Login and Registration Form in HTML & CSS | CodingLab </title>-->
+    <link rel="stylesheet" href="style.css">
+    <!-- Fontawesome CDN Link -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
+    <link rel="stylesheet" href="logincss.css">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Login</title>
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
-    <style>
-        body {
-            background-image: url("https://static.vecteezy.com/system/resources/previews/001/984/880/original/abstract-colorful-geometric-overlapping-background-and-texture-free-vector.jpg");
-            background-size: cover;
-            width: 100vw;
-            height: 100vh;
-        }
-    </style>
-</head>
-
+   </head>
 <body>
-    <div class="container p-5">
-        <h1 class="text-center mb-5 text-uppercase text-muted">ProJect Final</h1>
-        <div class="row">
-            <div class="col-sm-12 bg-light border rounded py-3">
-                <h2 class="text-center">Log In to Project</h2>
-                <form action="" method="POST">
-                    <div class="form-group">
-                        <label for="_email">Email</label>
-                        <input type="text" name="user_email" id="_email" class="form-control" placeholder="Email"
-                            rnodeequired>
-
-                    </div>
-                    <div class="form-group">
-                        <label for="_pass">Password</label>
-                        <input type="password" name="user_pass" id="_pass" class="form-control" placeholder="Password"
-                            required>
-
-                    </div>
-                    <% if (locals.login_errors) { login_errors.forEach(function(error_msg){ %>
-                        <div class="alert alert-danger" role="alert">
-                            <%= error_msg %>
-                        </div>
-                        <% }); } %>
-                            <center><button type="submit" class="btn btn-primary ">Login</button></center>
-                            <center>= ><a href="/register" class="btn btn-default">Register </a>< =</center>
-                           
-                </form>
-
-            </div>
+  <div class="container">
+    <input type="checkbox" id="flip">
+    <div class="cover">
+      <div class="front">
+        <!--<img src="images/frontImg.jpg" alt="">-->
+        <div class="text">
+          
         </div>
+      </div>
+      <div class="back">
+        <!--<img class="backImg" src="images/backImg.jpg" alt="">-->
+        <div class="text">
+          <span class="text-1">Complete miles of journey <br> with one step</span>
+          <span class="text-2">Let's get started</span>
+        </div>
+      </div>
     </div>
-</body>
 
+    <div class="forms">
+        <div class="form-content">
+          <div class="login-form">
+            <div class="title">Login</div>
+          <form action="/" method="POST">
+            <div class="input-boxes">
+              <div class="input-box">
+                <i class="fas fa-envelope"></i>
+                <input type="text" name="user_email" id="_email" class="form-control" placeholder="Email"
+                rnodeequired>
+              </div>
+              <div class="input-box">
+                <i class="fas fa-lock"></i>
+                <input type="password" name="user_pass" id="_pass" class="form-control" placeholder="Password"
+                required>
+              </div>
+              <div class="button input-box">
+                <input type="submit" value="Sumbit">
+              </div>
+              <div class="text sign-up-text">Don't have an account? <a href="/register" for="flip" >Sign Up</a></div>
+            </div>
+        </form>
+      </div>
+        
+    </div>
+    </div>
+  </div>
+</body>
 </html>
+<!-- 
+<form action="" method="POST">
+    <div class="form-group">
+        <label for="_email">Email</label>
+        <input type="text" name="user_email" id="_email" class="form-control" placeholder="Email"
+            rnodeequired>
+
+    </div>
+    <div class="form-group">
+        <label for="_pass">Password</label>
+        <input type="password" name="user_pass" id="_pass" class="form-control" placeholder="Password"
+            required>
+
+    </div>
+    <% if (locals.login_errors) { login_errors.forEach(function(error_msg){ %>
+        <div class="alert alert-danger" role="alert">
+            <%= error_msg %>
+        </div>
+        <% }); } %>
+            <center><button type="submit" class="btn btn-primary ">Login</button></center>
+            <center>= ><a href="/register" class="btn btn-default">Register </a>< =</center>
+           
+</form> -->

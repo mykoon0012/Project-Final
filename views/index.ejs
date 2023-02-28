@@ -1,5 +1,101 @@
-<%- include("_header") -%>
+<!-- <%- include("_header") -%>
     <div class="card-body p-5">
         <h1>Welcome back <%= name %> !!</h1>
     </div>
-    <%- include("_footer") -%>
+    <%- include("_footer") -%> -->
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Project Final</title>
+    <link rel="stylesheet" href="style.css">
+
+    <link href='https://unpkg.com/boxicons@2.0.7/css/boxicons.min.css' rel='stylesheet'>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="indexcss.css">
+</head>
+
+<body>
+    <div class="sidebar close">
+        <div class="logo-details">
+            <i class='bx bxl-c-plus-plus'></i>
+            <span class="logo_name">Project Final</span>
+        </div>
+        <ul class="nav-links">
+            <li>
+
+                <ul class="sub-menu blank">
+                    <li><a class="link_name" href="#">Menu</a></li>
+                </ul>
+            </li>
+            <li>
+                <div class="iocn-link">
+                    <a href="#">
+                        <i class='bx bx-collection'></i>
+                        <span class="link_name">Menu</span>
+                    </a>
+                    <i class='bx bxs-chevron-down arrow'></i>
+                </div>
+                <ul class="sub-menu">
+                    <li><a class="link_name" href="#">Menu</a></li>
+                    <li><a href="/room">Room</a></li>
+                    <li><a href="/Users">Users</a></li>
+                    <li><a href="/about">About</a></li>
+
+                </ul>
+            </li>
+
+            <li>
+                <div class="profile-details">
+                    <div class="profile-content">
+                    </div>
+                    <div class="name-job">
+                        <div class="profile_name">
+                            <%= name %>
+                        </div>
+
+                    </div>
+                    <div>
+                        <a href="/logout">
+                            <i class="bx bx-log-out icon"></i>
+                        </a>
+                    </div>
+            </li>
+        </ul>
+    </div>
+    <section class="home-section">
+        <div class="home-content">
+            <i class='bx bx-menu'></i>
+            <span class="text"></span>
+        </div>
+        <center>
+            <div class="con">
+                <div class="text-center mb-3">
+                    <h1 >Welcome back <%= name %> !!</h1>
+                    <br><br><br>
+                    <img src=https://media.tenor.com/rv6LS3eEwOQAAAAM/prayut-%E0%B8%9B%E0%B8%A3%E0%B8%B0%E0%B8%A2%E0%B8%B8%E0%B8%97%E0%B8%98%E0%B9%8C.gif alt="">
+                    <br><br>
+                    <h2>Welcome My Name is Toooooo !!!</h2>
+                </div>
+            </div>
+        </center>
+    </section>
+    <script>
+        let arrow = document.querySelectorAll(".arrow");
+        for (var i = 0; i < arrow.length; i++) {
+            arrow[i].addEventListener("click", (e) => {
+                let arrowParent = e.target.parentElement.parentElement;
+                arrowParent.classList.toggle("showMenu");
+            });
+        }
+        let sidebar = document.querySelector(".sidebar");
+        let sidebarBtn = document.querySelector(".bx-menu");
+        console.log(sidebarBtn);
+        sidebarBtn.addEventListener("click", () => {
+            sidebar.classList.toggle("close");
+        });
+    </script>
+</body>
+
+</html>
